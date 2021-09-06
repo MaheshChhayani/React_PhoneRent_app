@@ -1,0 +1,31 @@
+<div class="text-center">
+    <h1 class="display-4 heading-font">Give Your Site Review</h1>
+</div>
+<div class="row">
+    <div class="col-12">
+        <form (ngSubmit)="addNewReview(review)">
+            <div class="form-group">
+                <label for="name">Enter Your Name:</label>
+                <input type="text" class="form-control" [(ngModel)]="review.name" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="emailid">Enter Email ID:</label>
+                <input type="email" class="form-control" [(ngModel)]="review.emailid" id="emailid" name="emailid"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="reviewtext">Enter Review Text:</label>
+                <textarea class="form-control" [(ngModel)]="review.reviewtext" id="reviewtext" name="reviewtext"
+                    required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="rating">Choose Site Rating:</label>
+                <select class="form-control" [(ngModel)]="review.rating" id="rating" name="rating">
+                    <option *ngFor="let rating of ratings" value="{{rating}}">{{rating}}</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Your Review</button>
+
+        </form>
+    </div>
+</div>

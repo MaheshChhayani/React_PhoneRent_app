@@ -1,0 +1,27 @@
+<div class="text-center">
+    <h1 class="display-4 heading-font">Site Reviews</h1>
+</div>
+<div class="row">
+    <div class="col-12">
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Email ID</th>
+                    <th>Review Text</th>
+                    <th>Rating</th>
+                    <th>Review Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let review of reviews">
+                    <td>{{review.name}}</td>
+                    <td>{{review.emailid}}</td>
+                    <td>{{review.reviewtext}}</td>
+                    <td>{{review.rating}}</td>
+                    <td>{{review.reviewdate}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

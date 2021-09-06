@@ -1,0 +1,35 @@
+<div class="text-center">
+    <h1 class="display-4 heading-font">Your Mobile Requests</h1>
+</div>
+<div class="row">
+    <div class="col-12">
+        <p *ngIf="!isLoggedIn()" class="font2">Please Login to View Your Requests</p>
+        <table *ngIf="isLoggedIn()" class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Contact No</th>
+                    <th>Mobile Name</th>
+                    <th>Rent Price</th>
+                    <th>Start Date</th>
+                    <th>Operations</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="customers.length == 0">
+                    <td colspan="6" align="center">There is No Requests</td>
+                </tr>
+                <tr *ngFor="let customer of customers">
+                    <td>{{customer.name}}</td>
+                    <td>{{customer.contactno}}</td>
+                    <td>{{customer.mobilename}}</td>
+                    <td>${{customer.rentprice.toFixed(2)}}</td>
+                    <td>{{customer.startdate}}</td>
+                    <td>
+                        <button class="btn btn-danger" (click)="deleteRecord(customer._id)">Return The Mobile</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

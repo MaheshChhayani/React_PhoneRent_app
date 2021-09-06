@@ -1,0 +1,65 @@
+<div class="text-center">
+    <h1 class="display-4 heading-font">{{mobile.name}} Details <span *ngIf="customers.length > 0">(Not Available)</span></h1>
+</div>
+<div class="row">
+    <div class="col-4">
+        <div>
+            <img src="http://localhost:3000/images/{{mobile.imagename}}" alt="" >
+        </div>
+    </div>
+    <div class="col-8">
+        <h2 class="font2">Performance</h2>
+        <p class="font1"> {{mobile.performance}}</p>
+        <h2 class="font2">Display</h2>
+        <p class="font1"> {{mobile.display}}</p>
+        <h2 class="font2">Camera</h2>
+        <p class="font1"> {{mobile.camera}}</p>
+        <h2 class="font2">Battery</h2>
+        <p class="font1"> {{mobile.battery}}</p>
+        <h2 class="font2">Price</h2>
+        <p class="font1"> ${{mobile.price}}</p>
+        <h2 class="font2">Rent Price</h2>
+        <p class="font1">${{rentprice.toFixed(2)}} per month</p>
+        <button *ngIf="isLoggedIn() && customers.length == 0" class="btn btn-success mr-2" data-toggle="modal" data-target="#myModal" (click)="displayForm()">Request
+            For Rent This Mobile</button>
+        <p *ngIf="!isLoggedIn()"   class="font2">You have to Register or Login to Process Request</p>
+        <p *ngIf="customers.length > 0" class="font2">This Mobile is Picked on {{customers[0].startdate}}. You have to wait to request it.</p>
+    </div>
+</div>
+<div *ngIf="isLoggedIn()" id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <p class="modal-title">Request</p>
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="addNewCustomer(customer)">
+                    <div class="form-group">
+                        <p class="font2">Mobile Name: {{customer.mobilename}}</p>
+                    </div>
+                    <div class="form-group">
+                        <p class="font2">Mobile Rent Price: ${{customer.rentprice.toFixed(2)}}</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactno">Enter Contact No:</label>
+                        <input type="text" class="form-control" [(ngModel)]="customer.contactno" id="contactno" name="contactno"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="startdate">Choose Start Date:</label>
+                        <input type="date" class="form-control" [(ngModel)]="customer.startdate" id="startdate" name="startdate" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Your Request</button>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>

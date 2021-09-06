@@ -1,0 +1,91 @@
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand heading-font" routerLink="home" ><img src="assets/logo/logo.jpeg"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link font1 text-dark" routerLink="about" routerLinkActive="active">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font1 text-dark" routerLink="mobiles" routerLinkActive="active">Mobiles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font1 text-dark" routerLink="addreview" routerLinkActive="active">Give Review</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font1 text-dark" routerLink="reviews" routerLinkActive="active">Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font1 text-dark" routerLink="requests" routerLinkActive="active">Requests</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="login" class="nav-link font1 text-dark" *ngIf="!isLoggedIn()">Sign in</a>
+                    </li>
+                    
+                    <li class="nav-item dropdown"  *ngIf="isLoggedIn()">
+                        <a class="nav-link dropdown-toggle font1 text-dark" data-toggle="dropdown" role="button">{{ getUsername() }}</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item font1 text-dark" (click)="doLogout()">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div id="page-container">
+    <div id="content-wrap">
+
+   
+        <router-outlet></router-outlet>
+   
+
+</div>
+<div id="globalFooter">
+    <div id="footerData">
+            <div class="row">
+                <div class="col-4">
+                    <ul class="footerMenu">
+                        <li>
+                            <a routerLink="home" >Home</a>
+                        </li>
+                        <li>
+                            <a  routerLink="about" >About</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <div class="col-4">
+                    <ul class="footerMenu">
+                        
+                        <li>
+                            <a  routerLink="mobiles">Mobiles</a>
+                        </li>
+                        <li>
+                            <a  routerLink="addreview">Give Review</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-4">
+                    <ul  class="footerMenu">
+                        
+                        <li>
+                            <a  routerLink="reviews" >Reviews</a>
+                        </li>
+                        <li>
+                            <a  routerLink="requests">Requests</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="legal">
+                Copyright &copy; 2021 - Phone Rental. All Rights Reserved
+            </div>
+        </div>
+    </div>
+    </div>
